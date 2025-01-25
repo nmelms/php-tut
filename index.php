@@ -2,16 +2,19 @@
 
 require './functions.php';
 
-$path = $_SERVER['REQUEST_URI'];
+// require './router.php';
 
-echo $path;
-// Basic router
-if ($path === '/' || $path === '') {
-    require 'controllers/index.php';
-} elseif ($path === '/about') {
-    require 'controllers/about.php';
-}else if($path === '/contact'){
-  require 'controllers/contact.php';
-} else {
-    require 'controllers/404.php';
+$dsn = 'mysql:host=localhost;port=3600;dbname=myapp;user=root;charset=utf8mb4';
+$pdo = new PDO($dsn);
+
+$statement = $pdo->prepare('select * from posts');
+
+$statement->execute();
+
+$posts = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+foreach ($posts as $post) {
+  echo '<li>';
+  echo $post['title'];
+  echo '</li>';
 }
