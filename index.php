@@ -1,17 +1,14 @@
 <?php
 
-require './functions.php';
+require 'functions.php';
 
-// require './router.php';
+require 'router.php';
+require 'Database.php';
 
-$dsn = 'mysql:host=localhost;port=3600;dbname=myapp;user=root;charset=utf8mb4';
-$pdo = new PDO($dsn);
+$config = require('config.php');
 
-$statement = $pdo->prepare('select * from posts');
-
-$statement->execute();
-
-$posts = $statement->fetchAll(PDO::FETCH_ASSOC);
+$db = new Database($config['database']);
+$posts = $db->query('select * from posts where id > 1')->fetchAll();
 
 foreach ($posts as $post) {
   echo '<li>';
