@@ -5,7 +5,13 @@
 
   <main>
     <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-      <h1>this is the notes page</h1>
+    <?php foreach ($all_notes as $note) : ?>
+        <li>
+          <a href="/note?id=<?= $note['id'] ?>" class="text-blue-500 hover:underline">
+            <?php echo $note['body']; ?>            
+          </a>
+        </li>
+    <?php endforeach; ?>
     </div>
   </main>
 
