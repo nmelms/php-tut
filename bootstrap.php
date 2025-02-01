@@ -12,7 +12,6 @@ $container->bind('Core\Database', function(){
 });
 
 
-App::setContainer($cointaner);
+App::setContainer($container);
 
-
-dd($db);
+  
