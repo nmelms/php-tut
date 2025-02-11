@@ -12,7 +12,7 @@ class middleware{
     if(!$key){
       return;
     }
-
+    
       $middleware = static::MAP[$key] ?? false;
 
       if(!$middleware){
