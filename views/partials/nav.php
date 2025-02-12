@@ -40,6 +40,15 @@
                             </span>
                         </div>
                     </div>
+                    <div class="ml-3"></div>
+                        <?php if($_SESSION['user'] ?? false) : ?> 
+                            <form action="/session" method="POST">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button class="text-white">Logout</button>
+                            </form>
+                        </div>                            
+                    <?php endif ?>
+
                 </div>
             </div>
             <div class="-mr-2 flex md:hidden">
